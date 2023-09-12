@@ -54,6 +54,11 @@ class SpeedTestController extends GetxController {
         server = event.server;
         connectionType = event.connectionType;
 
+        if (event.status == 'Speed test started') {
+          isDisabled = true;
+          update();
+        }
+
         if (event.status == 'Speed test finished') {
           isDisabled = false;
           update();
