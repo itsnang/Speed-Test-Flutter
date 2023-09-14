@@ -62,10 +62,10 @@ class SpeedMeter extends StatelessWidget {
           annotations: <GaugeAnnotation>[
             GaugeAnnotation(
               widget: TextWidget.custom(
-                fontSize: 20,
-                color: context.backgroundColor,
-                '${currentSpeed.toStringAsFixed(2)} Mbps',
-              ),
+                  fontSize: 20,
+                  color: context.backgroundColor,
+                  '${currentSpeed.toStringAsFixed(2)} Mbps',
+                  isBold: true),
               angle: 90,
               positionFactor: 0.5,
             ),

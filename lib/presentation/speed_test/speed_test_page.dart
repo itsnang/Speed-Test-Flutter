@@ -31,7 +31,17 @@ class SpeedTestPage extends StatelessWidget {
               ),
               SpeedMeter(currentSpeed: controller.currentSpeed),
               ButtonWidget.round(
-                controller.isDisabled ? 'Loading...' : 'Test Speed',
+                controller.isDisabled ? 'Testing...' : 'Test Speed',
+                icon: controller.isDisabled
+                    ? SizedBox(
+                        width: 20,
+                        height: 20,
+                        child: CircularProgressIndicator(
+                          color: Get.context!.backgroundColor,
+                          strokeWidth: 2,
+                        ),
+                      )
+                    : null,
                 isFull: true,
                 isDisabled: controller.isDisabled,
                 onPressed: controller.getSpeed,
