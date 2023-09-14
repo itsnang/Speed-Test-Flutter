@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:heroicons/heroicons.dart';
+import 'package:speedtest_kh/app/shared/themes/color_theme.dart';
 import 'package:speedtest_kh/app/shared/themes/theme.dart';
 import 'package:speedtest_kh/app/shared/widgets/button_widget.dart';
 import 'package:speedtest_kh/app/shared/widgets/speed_meter_widget.dart';
@@ -15,18 +16,22 @@ class SpeedTestPage extends StatelessWidget {
     return GetBuilder<SpeedTestController>(
       builder: (context) {
         return Scaffold(
+          backgroundColor: Get.context!.outlineColor,
           body: ListView(
-            padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 32),
+            padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 52),
             children: [
               _buildSpeedResult(controller),
-              TextWidget.body(
-                controller.status.toUpperCase(),
-                textAlign: TextAlign.center,
-                isBold: true,
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: TextWidget.body(
+                  controller.status.toUpperCase(),
+                  color: Get.context!.backgroundColor,
+                  textAlign: TextAlign.center,
+                ),
               ),
               SpeedMeter(currentSpeed: controller.currentSpeed),
               ButtonWidget.round(
-                'Test Speed',
+                controller.isDisabled ? 'Loading...' : 'Test Speed',
                 isFull: true,
                 isDisabled: controller.isDisabled,
                 onPressed: controller.getSpeed,
@@ -71,7 +76,8 @@ class SpeedTestPage extends StatelessWidget {
           _itemContainer(
             icon: HeroIcons.userCircle,
             title: 'ISP',
-            subtitle: controller.isp.toUpperCase(),
+            subtitle:
+                controller.isp == '' ? 'Unknow' : controller.isp.toUpperCase(),
             iconColor: Get.context!.primaryColor,
             backgroundColor: Get.context!.primaryColor.withOpacity(0.2),
           ),
@@ -107,17 +113,22 @@ class SpeedTestPage extends StatelessWidget {
         Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            TextWidget.body(title, isBold: true),
-            TextWidget.subtitle(subtitle),
+            TextWidget.body(title,
+                isBold: true, color: Get.context!.backgroundColor),
+            TextWidget.subtitle(subtitle, color: Get.context!.backgroundColor),
           ],
         ),
       ],
     );
   }
 
-  Padding _buildSpeedResult(SpeedTestController controller) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 8),
+  Widget _buildSpeedResult(SpeedTestController controller) {
+    return Container(
+      decoration: BoxDecoration(
+        color: ColorTheme.grey700,
+        borderRadius: BorderRadius.circular(12),
+      ),
+      padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
@@ -126,18 +137,21 @@ class SpeedTestPage extends StatelessWidget {
               Row(
                 children: [
                   HeroIcon(
-                    HeroIcons.arrowDown,
+                    HeroIcons.arrowDownCircle,
+                    size: 26,
+                    style: HeroIconStyle.solid,
                     color: Get.context!.secondaryColor,
                   ),
                   const SizedBox(
                     width: 8,
                   ),
-                  TextWidget.subtitle('Download', isBold: true),
+                  TextWidget.subtitle('Download',
+                      isBold: true, color: Get.context!.backgroundColor),
                 ],
               ),
               TextWidget.subtitle(
-                '${controller.downloadSpeed.toStringAsFixed(2)} Mbps',
-              ),
+                  '${controller.downloadSpeed.toStringAsFixed(2)} Mbps',
+                  color: Get.context!.cardColor),
             ],
           ),
           Column(
@@ -145,17 +159,21 @@ class SpeedTestPage extends StatelessWidget {
               Row(
                 children: [
                   HeroIcon(
-                    HeroIcons.arrowUp,
-                    color: Get.context!.errorColor,
+                    HeroIcons.arrowUpCircle,
+                    size: 26,
+                    style: HeroIconStyle.solid,
+                    color: Get.context!.primaryColor,
                   ),
                   const SizedBox(
                     width: 8,
                   ),
-                  TextWidget.subtitle('Upload', isBold: true),
+                  TextWidget.subtitle('Upload',
+                      isBold: true, color: Get.context!.backgroundColor),
                 ],
               ),
               TextWidget.subtitle(
                 '${controller.uploadSpeed.toStringAsFixed(2)} Mbps',
+                color: Get.context!.backgroundColor,
               ),
             ],
           ),

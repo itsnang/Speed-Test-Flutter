@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:speedtest_kh/app/shared/themes/color_theme.dart';
 import 'package:speedtest_kh/app/shared/themes/theme.dart';
 import 'package:speedtest_kh/app/shared/widgets/text_widget.dart';
 import 'package:syncfusion_flutter_gauges/gauges.dart';
@@ -22,6 +23,7 @@ class SpeedMeter extends StatelessWidget {
           labelOffset: 30,
           showLastLabel: true,
           maximum: 110,
+          axisLabelStyle: GaugeTextStyle(color: context.disableColor),
           startAngle: 150,
           endAngle: 30,
           ranges: [
@@ -29,7 +31,7 @@ class SpeedMeter extends StatelessWidget {
               rangeOffset: -1,
               startValue: 0,
               endValue: 110,
-              color: context.disableColor,
+              color: ColorTheme.grey700,
               startWidth: 20,
               endWidth: 20,
             ),
@@ -59,10 +61,10 @@ class SpeedMeter extends StatelessWidget {
           ],
           annotations: <GaugeAnnotation>[
             GaugeAnnotation(
-              widget: TextWidget.subtitle(
-                color: context.primaryColor,
-                isBold: true,
-                '${currentSpeed.toStringAsFixed(1)} Mbps',
+              widget: TextWidget.custom(
+                fontSize: 20,
+                color: context.backgroundColor,
+                '${currentSpeed.toStringAsFixed(2)} Mbps',
               ),
               angle: 90,
               positionFactor: 0.5,

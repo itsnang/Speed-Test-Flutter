@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:heroicons/heroicons.dart';
 import 'package:speedtest_kh/app/shared/themes/color_theme.dart';
 import 'package:speedtest_kh/app/shared/themes/styles/button_style.dart';
+import 'package:speedtest_kh/app/shared/themes/theme.dart';
 import 'package:speedtest_kh/app/shared/widgets/text_widget.dart';
 import 'package:speedtest_kh/constants/constant.dart';
 import 'package:speedtest_kh/constants/enums/text_enum.dart';
@@ -117,8 +119,9 @@ class ButtonWidget {
   }) {
     textColor ??= ColorTheme.white;
     isBold ??= false;
-    backgroundColor ??=
-        isDisabled ? ColorTheme.primaryLight : ColorTheme.primaryColor;
+    backgroundColor ??= isDisabled
+        ? Get.context!.secondaryColor.withOpacity(0.4)
+        : Get.context!.secondaryColor;
 
     final textMapper = {
       TextSizeEnum.subtitle: TextWidget.subtitle,
