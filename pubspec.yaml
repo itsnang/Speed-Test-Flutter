@@ -46,6 +46,7 @@ dependencies:
   heroicons: ^0.9.0
   speed_checker_plugin: ^1.0.15
   google_nav_bar: ^5.0.6
+  lottie: ^2.6.0
 
 dev_dependencies:
   flutter_test:
@@ -96,7 +97,7 @@ flutter:
     - family: Inter
       fonts:
         - asset: assets/fonts/Inter-Medium.ttf
-        - asset: Inter-Bold.ttf
+        - asset: assets/fonts/Inter-Bold.ttf
           weight: 700
   #
   # For details regarding fonts from package dependencies,
