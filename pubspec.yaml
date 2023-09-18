@@ -45,6 +45,7 @@ dependencies:
   cupertino_icons: ^1.0.2
   heroicons: ^0.9.0
   speed_checker_plugin: ^1.0.15
+  google_nav_bar: ^5.0.6
 
 dev_dependencies:
   flutter_test:
@@ -68,6 +69,11 @@ flutter:
   # the material Icons class.
   assets:
     - shorebird.yaml
+    - assets/images/
+    - assets/fonts/
+    - shorebird.yaml
+    - assets/lotties/
+
   uses-material-design: true
 
   # To add assets to your application, add an assets section, like this:
@@ -86,17 +92,12 @@ flutter:
   # "family" key with the font family name, and a "fonts" key with a
   # list giving the asset and other descriptors for the font. For
   # example:
-  # fonts:
-  #   - family: Schyler
-  #     fonts:
-  #       - asset: fonts/Schyler-Regular.ttf
-  #       - asset: fonts/Schyler-Italic.ttf
-  #         style: italic
-  #   - family: Trajan Pro
-  #     fonts:
-  #       - asset: fonts/TrajanPro.ttf
-  #       - asset: fonts/TrajanPro_Bold.ttf
-  #         weight: 700
+  fonts:
+    - family: Inter
+      fonts:
+        - asset: assets/fonts/Inter-Medium.ttf
+        - asset: Inter-Bold.ttf
+          weight: 700
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages
