@@ -16,7 +16,6 @@ class SpeedTestPage extends StatelessWidget {
     return GetBuilder<SpeedTestController>(
       builder: (context) {
         return Scaffold(
-          backgroundColor: Get.context!.outlineColor,
           body: ListView(
             padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 52),
             children: [
@@ -124,8 +123,8 @@ class SpeedTestPage extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             TextWidget.body(title,
-                isBold: true, color: Get.context!.backgroundColor),
-            TextWidget.subtitle(subtitle, color: Get.context!.backgroundColor),
+                isBold: true, color: Get.context!.outlineColor),
+            TextWidget.subtitle(subtitle, color: Get.context!.outlineColor),
           ],
         ),
       ],
@@ -135,7 +134,7 @@ class SpeedTestPage extends StatelessWidget {
   Widget _buildSpeedResult(SpeedTestController controller) {
     return Container(
       decoration: BoxDecoration(
-        color: ColorTheme.grey700,
+        color: Get.context!.primaryLightColor.withOpacity(0.3),
         borderRadius: BorderRadius.circular(12),
       ),
       padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
@@ -156,12 +155,12 @@ class SpeedTestPage extends StatelessWidget {
                     width: 8,
                   ),
                   TextWidget.subtitle('Download',
-                      isBold: true, color: Get.context!.backgroundColor),
+                      isBold: true, color: Get.context!.outlineColor),
                 ],
               ),
               TextWidget.subtitle(
                   '${controller.downloadSpeed.toStringAsFixed(2)} Mbps',
-                  color: Get.context!.cardColor),
+                  color: Get.context!.outlineColor),
             ],
           ),
           Column(
@@ -178,12 +177,12 @@ class SpeedTestPage extends StatelessWidget {
                     width: 8,
                   ),
                   TextWidget.subtitle('Upload',
-                      isBold: true, color: Get.context!.backgroundColor),
+                      isBold: true, color: Get.context!.outlineColor),
                 ],
               ),
               TextWidget.subtitle(
                 '${controller.uploadSpeed.toStringAsFixed(2)} Mbps',
-                color: Get.context!.backgroundColor,
+                color: Get.context!.outlineColor,
               ),
             ],
           ),

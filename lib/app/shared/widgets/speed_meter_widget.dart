@@ -23,7 +23,6 @@ class SpeedMeter extends StatelessWidget {
           labelOffset: 30,
           showLastLabel: true,
           maximum: 110,
-          axisLabelStyle: GaugeTextStyle(color: context.disableColor),
           startAngle: 150,
           endAngle: 30,
           ranges: [
@@ -31,7 +30,7 @@ class SpeedMeter extends StatelessWidget {
               rangeOffset: -1,
               startValue: 0,
               endValue: 110,
-              color: ColorTheme.grey700,
+              color: context.primaryColor.withOpacity(0.1),
               startWidth: 20,
               endWidth: 20,
             ),
