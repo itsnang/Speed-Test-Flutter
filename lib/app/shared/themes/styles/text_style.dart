@@ -92,7 +92,7 @@ class PtTextStyle {
       fontSize: fontSize,
       color: color,
       height: height,
-      decoration: decoration,
+      decoration: TextDecoration.none,
     );
   }
 }
