@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import 'package:lottie/lottie.dart';
+import 'package:speedtest_kh/app/shared/themes/theme.dart';
 import 'package:speedtest_kh/app/shared/widgets/button_widget.dart';
 import 'package:speedtest_kh/app/shared/widgets/dialogs/dialog_containter_widget.dart';
 import 'package:speedtest_kh/app/shared/widgets/text_widget.dart';
@@ -34,7 +35,7 @@ class DialogAlertWiget extends StatelessWidget {
     Widget spacer = const SizedBox();
 
     final cancelButton = Expanded(
-      child: ButtonWidget.outline(
+      child: ButtonWidget.round(
         closeButtonString,
         isBold: true,
         borderRadius: BasedDialogContainer.borderRadius,
@@ -64,12 +65,16 @@ class DialogAlertWiget extends StatelessWidget {
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
-          Lottie.asset(lottieString, width: 50, height: 50),
+          Lottie.asset(lottieString, width: 30, height: 30),
           const SizedBox(height: 10),
           if (title != null)
             TextWidget.subtitle(title!,
-                isBold: true, textAlign: TextAlign.center),
-          if (desc != null) TextWidget.body(desc!, textAlign: TextAlign.center),
+                isBold: true,
+                textAlign: TextAlign.center,
+                color: context.secondaryColor),
+          if (desc != null)
+            TextWidget.body(desc!,
+                textAlign: TextAlign.center, color: context.outlineColor),
           const SizedBox(height: 15),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,

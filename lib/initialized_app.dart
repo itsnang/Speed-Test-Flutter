@@ -31,7 +31,7 @@ class StartPage extends StatefulWidget {
 
 class _StartPageState extends State<StartPage> {
   int _selectedIndex = 0;
-  static List<Widget> _WidgetOptions = <Widget>[
+  static final _widgetOptions = <Widget>[
     SpeedTestPage(),
     FaceDetectPage(),
     HistoryPage(),
@@ -39,7 +39,7 @@ class _StartPageState extends State<StartPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: _WidgetOptions.elementAt(_selectedIndex),
+      body: _widgetOptions.elementAt(_selectedIndex),
       bottomNavigationBar: Container(
         decoration: BoxDecoration(
           color: context.disableColor,
@@ -64,7 +64,7 @@ class _StartPageState extends State<StartPage> {
                 duration: Duration(milliseconds: 400),
                 tabBackgroundColor: context.primaryLightColor,
                 color: Colors.black,
-                tabs: [
+                tabs: const [
                   GButton(
                     icon: Iconsax.home,
                     text: 'Home',
