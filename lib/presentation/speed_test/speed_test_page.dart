@@ -16,37 +16,42 @@ class SpeedTestPage extends StatelessWidget {
     return GetBuilder<SpeedTestController>(
       builder: (context) {
         return Scaffold(
-          body: ListView(
-            padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 52),
-            children: [
-              _buildSpeedResult(controller),
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: TextWidget.body(
-                  controller.status.toUpperCase(),
-                  color: Get.context!.backgroundColor,
-                  textAlign: TextAlign.center,
+          body: SafeArea(
+            child: ListView(
+              padding: const EdgeInsets.symmetric(
+                horizontal: 12,
+                vertical: 12,
+              ),
+              children: [
+                _buildSpeedResult(controller),
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: TextWidget.body(
+                    controller.status.toUpperCase(),
+                    color: Get.context!.backgroundColor,
+                    textAlign: TextAlign.center,
+                  ),
                 ),
-              ),
-              SpeedMeter(currentSpeed: controller.currentSpeed),
-              ButtonWidget.round(
-                controller.isDisabled ? 'Testing...' : 'Test Speed',
-                icon: controller.isDisabled
-                    ? SizedBox(
-                        width: 20,
-                        height: 20,
-                        child: CircularProgressIndicator(
-                          color: Get.context!.backgroundColor,
-                          strokeWidth: 2,
-                        ),
-                      )
-                    : null,
-                isFull: true,
-                isDisabled: controller.isDisabled,
-                onPressed: controller.getSpeed,
-              ),
-              _buildDetail(controller),
-            ],
+                SpeedMeter(currentSpeed: controller.currentSpeed),
+                ButtonWidget.round(
+                  controller.isDisabled ? 'Testing...' : 'Test Speed',
+                  icon: controller.isDisabled
+                      ? SizedBox(
+                          width: 20,
+                          height: 20,
+                          child: CircularProgressIndicator(
+                            color: Get.context!.backgroundColor,
+                            strokeWidth: 2,
+                          ),
+                        )
+                      : null,
+                  isFull: true,
+                  isDisabled: controller.isDisabled,
+                  onPressed: controller.getSpeed,
+                ),
+                _buildDetail(controller),
+              ],
+            ),
           ),
         );
       },
